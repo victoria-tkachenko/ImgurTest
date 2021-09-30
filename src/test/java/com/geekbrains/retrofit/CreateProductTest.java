@@ -6,6 +6,7 @@ import com.geekbrains.retrofit.dto.ProductDto;
 import com.geekbrains.retrofit.utils.RetrofitUtils;
 import com.github.javafaker.Faker;
 import lombok.SneakyThrows;
+import okhttp3.ResponseBody;
 import org.hamcrest.CoreMatchers;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -50,7 +51,7 @@ public class CreateProductTest {
     @SneakyThrows
     @AfterEach
     void tearDown () {
-        Response<ProductDto> response = productService.deleteProduct(id)
+        Response<ResponseBody> response = productService.deleteProduct(id)
                 .execute();
         assertThat(response.isSuccessful(), CoreMatchers.is(true));
     }

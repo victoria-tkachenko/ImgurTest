@@ -1,8 +1,12 @@
 package com.geekbrains;
 
+import io.restassured.builder.ResponseSpecBuilder;
+import io.restassured.specification.ResponseSpecification;
 import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.*;
+
+import java.io.File;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.contains;
@@ -15,6 +19,18 @@ public class ImgurApiTest {
     private static int commentId;
     private static String vote = "up";
     private static String albumHash = "U2VfA9S";
+
+    ResponseSpecification responseSpecification = null;
+
+    void beforeTest() {
+        responseSpecification = new ResponseSpecBuilder()
+                .expectStatusCode(200)
+                .expectStatusLine("HTTP/1.1 200 OK")
+                .expectResponseTime(Matchers.lessThan(5000L))
+                .expectHeader("Access-Control-Allow-Credentials", "true")
+                .build();
+    }
+
 
     @Test
     @DisplayName("Получение информации об аккаунте")
@@ -120,7 +136,7 @@ public class ImgurApiTest {
                 .log()
                 .all()
                 .when()
-                .post("https://api.imgur.com/3/comment/" + commentId + "/vote/"  + vote);
+                .post("https://api.imgur.com/3/comment/" + commentId + "/vote/" + vote);
     }
 
     @Test
@@ -158,7 +174,7 @@ public class ImgurApiTest {
     @Test
     @Order(9)
     @DisplayName("Получить альбом")
-    void getAlbum () {
+    void getAlbum() {
         given()
                 .header("Authorization", "Client-ID 245e10b28ddc002")
                 .expect()
@@ -172,7 +188,7 @@ public class ImgurApiTest {
     @Test
     @Order(10)
     @DisplayName("Получить картинки альбома")
-    void getAlbumImages () {
+    void getAlbumImages() {
         given()
                 .header("Authorization", "Client-ID 245e10b28ddc002")
                 .expect()
@@ -183,5 +199,23 @@ public class ImgurApiTest {
                 .when()
                 .get("https://api.imgur.com/3/album/" + albumHash + "/images");
     }
+
+    @Test
+    @Order(11)
+    @DisplayName("Загрузка картинки")
+    void imageUploadMultiPart() {
+        given()
+                .header("Authorization", "Client-ID 245e10b28ddc002")
+                .multiPart("image", new File("src/test/resources/2Qnp7Og.jpeg"), "image/jpeg")
+                .log()
+                .all()
+                .when()
+                .post("https://api.imgur.com/3/upload")
+                .then()
+                .statusCode(200)
+                .log()
+                .all();
+    }
+
 }
 

@@ -22,24 +22,4 @@ public class ProductDto {
 
     @JsonProperty("categoryTitle")
     private String categoryTitle;
-
-//    public ProductDto withId(Integer id) {
-//        this.id = id;
-//        return this;
-//    }
-//
-//    public ProductDto withTitle(String title) {
-//        this.title = title;
-//        return this;
-//    }
-//
-//    public ProductDto withPrice(Integer price) {
-//        this.price = price;
-//        return this;
-//    }
-//
-//    public ProductDto withCategoryTitle(String categoryTitle) {
-//        this.categoryTitle = categoryTitle;
-//        return this;
-//    }
 }

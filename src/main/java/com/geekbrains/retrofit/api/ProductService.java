@@ -15,7 +15,7 @@ public interface ProductService {
     Call<ProductDto> createProduct (@Body ProductDto createProductRequest);
 
     @PUT("market/api/v1/products")
-    Call<ProductDto> modifyProduct();
+    Call<ProductDto> modifyProduct(@Body ProductDto modifyProductRequest);
 
     @GET("market/api/v1/products/{id}")
     Call<ProductDto> getProduct(@Path("id") int id);

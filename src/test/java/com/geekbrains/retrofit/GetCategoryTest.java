@@ -1,11 +1,10 @@
 package com.geekbrains.retrofit;
 
 import com.geekbrains.retrofit.api.CategoryService;
-import com.geekbrains.retrofit.dto.GetCategoryResponse;
+import com.geekbrains.retrofit.dto.CategoryDto;
 import com.geekbrains.retrofit.utils.RetrofitUtils;
 import lombok.SneakyThrows;
 import org.hamcrest.CoreMatchers;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import retrofit2.Response;
@@ -17,7 +16,6 @@ import static org.hamcrest.Matchers.equalTo;
 
 public class GetCategoryTest {
     static CategoryService categoryService;
-    Random random = new Random();
 
     @BeforeAll
     static void beforeAll() {
@@ -28,7 +26,7 @@ public class GetCategoryTest {
     @SneakyThrows
     @Test
     void getCategoryByIdPositiveTest () {
-        Response<GetCategoryResponse> response = categoryService.getCategory(1).execute();
+        Response<CategoryDto> response = categoryService.getCategory(1).execute();
 
         System.out.println(response.body());
 
@@ -41,9 +39,7 @@ public class GetCategoryTest {
     @SneakyThrows
     @Test
     void getCategoryByIdNegativeTest () {
-        Response<GetCategoryResponse> response = categoryService.getCategory(9).execute();
-
-        System.out.println(response.body());
+        Response<CategoryDto> response = categoryService.getCategory(9).execute();
 
         assertThat(response.isSuccessful(), CoreMatchers.is(false));
 

@@ -1,17 +1,29 @@
 package com.geekbrains.retrofit.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
-public class GetCategoryResponse {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@With
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class CategoryDto {
 
     private Integer id;
     private String title;
     @JsonProperty ("products")
     private List<ProductDto> products = new ArrayList<>();
+
+    public String toString() {
+        return products.toString();
+    }
+
+
 
 }

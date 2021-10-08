@@ -4,12 +4,15 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
+import java.io.Serializable;
+
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @With
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProductDto {
+@Builder
+public class ProductDto implements Serializable {
 
     @JsonProperty("id")
     private Integer id;

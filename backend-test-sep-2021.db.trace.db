@@ -1,0 +1,4 @@
+2021-10-05 08:34:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "PRODUCTS" не найдена
+Table "PRODUCTS" not found; SQL statement:
+SELECT P.ID, P.TITLE AS PRODUCT_TITLE, P.PRICE, C.TITLE AS CATEGORY_TITLE FROM PRODUCTS P JOIN CATEGORIES C ON P.CATEGORY_ID = C.ID WHERE P.ID = 1 [42102-200]

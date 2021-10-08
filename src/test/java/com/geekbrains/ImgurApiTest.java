@@ -2,7 +2,6 @@ package com.geekbrains;
 
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.specification.ResponseSpecification;
-import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.*;
 
@@ -32,7 +31,7 @@ public class ImgurApiTest {
     }
 
 
-    @Test
+
     @DisplayName("Получение информации об аккаунте")
     @Order(1)
     void testGetAccountBase() {
@@ -51,7 +50,7 @@ public class ImgurApiTest {
                 .get("https://api.imgur.com/3/account/levinmk23");
     }
 
-    @Test
+
     @DisplayName("Создание комментария")
     @Order(2)
     void testPostComment() {
@@ -72,7 +71,7 @@ public class ImgurApiTest {
                 .getInt("data.id");
     }
 
-    @Test
+
     @Order(3)
     @DisplayName("Получение комментария")
     void testGetComment() {
@@ -89,7 +88,7 @@ public class ImgurApiTest {
                 .get("https://api.imgur.com/3/comment/" + commentId);
     }
 
-    @Test
+
     @Order(4)
     @DisplayName("Создание ответа на комментарий")
     void testCreateReply() {
@@ -108,7 +107,7 @@ public class ImgurApiTest {
 
     }
 
-    @Test
+
     @Order(5)
     @DisplayName("Получение ответов к коментарию")
     void testGetReplies() {
@@ -124,7 +123,7 @@ public class ImgurApiTest {
 
     }
 
-    @Test
+
     @Order(6)
     @DisplayName("Голосование")
     void testVote() {
@@ -139,7 +138,7 @@ public class ImgurApiTest {
                 .post("https://api.imgur.com/3/comment/" + commentId + "/vote/" + vote);
     }
 
-    @Test
+
     @Order(7)
     @DisplayName("Удаление комментария")
     void testDeleteComment() {
@@ -155,7 +154,7 @@ public class ImgurApiTest {
                 .delete("https://api.imgur.com/3/comment/" + commentId);
     }
 
-    @Test
+
     @Order(8)
     @DisplayName("Комментарий не существует")
     void testCommentNotExist() {
@@ -171,7 +170,7 @@ public class ImgurApiTest {
         Assertions.assertTrue(actually.contains("<title>imgur: the simple 404 page</title>"));
     }
 
-    @Test
+
     @Order(9)
     @DisplayName("Получить альбом")
     void getAlbum() {
@@ -185,7 +184,7 @@ public class ImgurApiTest {
                 .get("https://api.imgur.com/3/album/" + albumHash);
     }
 
-    @Test
+
     @Order(10)
     @DisplayName("Получить картинки альбома")
     void getAlbumImages() {

@@ -28,7 +28,7 @@ class HelloWorldTest {
         helloWorld = new HelloWorld();
     }
 
-    @Test
+
     @Order(1)
     @DisplayName("Тест функции foo")
     void testFoo() {
@@ -45,7 +45,6 @@ class HelloWorldTest {
 
 
     @Order(3)
-    @Test
     @DisplayName("Тест деление на 0")
     void testThrowException() {
         assertThrows(

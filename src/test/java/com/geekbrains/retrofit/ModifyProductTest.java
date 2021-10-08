@@ -30,7 +30,7 @@ public class ModifyProductTest {
     @BeforeEach
     void modify () {
         productDto = new ProductDto()
-                .withId(1)
+                .withId(6)
                 .withTitle(faker.food().ingredient())
                 .withCategoryTitle("Food")
                 .withPrice((int) (Math.random() *1000));

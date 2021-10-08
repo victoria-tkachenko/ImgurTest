@@ -1,0 +1,4 @@
+com/geekbrains/jdbc/Product.class
+com/geekbrains/jdbc/Test.class
+com/geekbrains/jdbc/H2DbHelper.class
+com/geekbrains/jdbc/Product$ProductBuilder.class

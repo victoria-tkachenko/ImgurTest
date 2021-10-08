@@ -36,7 +36,7 @@ public class GetProductTest {
         title = response.body().getTitle();
         assertThat(response.isSuccessful(), CoreMatchers.is(true));
 
-        assertThat(response.body().getTitle(), equalTo("Milk"));
+        assertThat(response.body().getTitle(), equalTo("Chives"));
 
         System.out.println(response.body().getTitle());
     }
